@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Website</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link rel="stylesheet" href="assets/css/dashboard-style.css" />
+    <link rel="stylesheet" href="assets/css/dashboard-responsive.css" />
+  </head>
+  <body class="mat-typography">
+    <app-root></app-root>
+  </body>
+  <!-- jQuery Javascript -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/slick.js"></script>
+  <script src="assets/js/custom.js"></script>
+
+  <script>
+    $(function () {
+      $("#navbar-toggler").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+      });
+
+      $(window).resize(function (e) {
+        if ($(window).width() <= 768) {
+          $("#wrapper").removeClass("toggled");
+        } else {
+          $("#wrapper").addClass("toggled");
+        }
+      });
+    });
+  </script>
+</html>

@@ -1,0 +1,692 @@
+:root {
+  --input-padding-x: 1.5rem;
+  --input-padding-y: .75rem;
+}
+
+
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,ol,p
+{
+   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a:hover
+{
+   text-decoration: none;
+}
+
+h1,h2,h3,h4,h5,h6,p
+{
+   margin: 0;
+   padding: 0;
+}
+
+@font-face {
+font-family: 'Myriad Pro Regular';
+font-style: normal;
+font-weight: normal;
+src: local('../fonts/Myriad Pro Regular'), local('../fonts/MYRIADPRO-REGULAR.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Myriad Pro Condensed';
+font-style: normal;
+font-weight: normal;
+src: local('../fonts/Myriad Pro Condensed'), local('../fonts/MYRIADPRO-COND.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Myriad Pro Condensed Italic';
+font-style: normal;
+font-weight: normal;
+src: local('../fonts/Myriad Pro Condensed Italic'), local('../fonts/MYRIADPRO-CONDIT.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Myriad Pro Light';
+font-style: normal;
+font-weight: normal;
+src: local('../fonts/Myriad Pro Light'), local('../fonts/MyriadPro-Light.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Myriad Pro Semibold';
+font-style: normal;
+font-weight: normal;
+src: local('../fonts/Myriad Pro Semibold'), local('../fonts/MYRIADPRO-SEMIBOLD.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Myriad Pro Semibold Italic';
+font-style: normal;
+font-weight: normal;
+src: local('../fonts/Myriad Pro Semibold Italic'), local('../fonts/MYRIADPRO-SEMIBOLDIT.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Myriad Pro Bold Condensed';
+font-style: normal;
+font-weight: normal;
+src: local('../fonts/Myriad Pro Bold Condensed'), local('../fonts/MYRIADPRO-BOLDCOND.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Myriad Pro Bold';
+font-style: normal;
+font-weight: normal;
+src: local('../fonts/Myriad Pro Bold'), local('../fonts/MYRIADPRO-BOLD.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Myriad Pro Bold Italic';
+font-style: normal;
+font-weight: normal;
+src: local('../fonts/Myriad Pro Bold Italic'), local('../fonts/MYRIADPRO-BOLDIT.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Myriad Pro Bold Condensed Italic';
+font-style: normal;
+font-weight: normal;
+src: local('../fonts/Myriad Pro Bold Condensed Italic'), local('../fonts/MYRIADPRO-BOLDCONDIT.woff') format('woff');
+}
+
+body,html
+{
+   height: 100%;
+   font-family: 'Myriad Pro Regular';
+}
+
+
+
+body {
+  overflow-x: hidden;
+  padding-top: 80px;
+}
+
+   .form-inline {
+        display: inline-block;
+    }
+  .navbar-header.col {
+    padding: 0 !important;
+  }
+  .navbar {
+    background: #fff;
+    padding-left: 16px;
+    padding-right: 16px;
+
+    box-shadow: 0 0 12px rgba(0,0,0,.1);
+  }
+  .nav-link img {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    margin: -8px 0;
+    float: left;
+    margin-right: 10px;
+  }
+  .navbar .navbar-brand {
+    color: #555;
+    padding-left: 0;
+    padding-right: 50px;
+  }
+  .navbar .navbar-brand i {
+    font-size: 20px;
+    margin-right: 5px;
+  }
+  .search-box {
+        position: relative;
+    }
+    .search-box input {
+    box-shadow: none;
+        padding-right: 35px;
+        border-radius: 3px !important;
+    }
+  .search-box .input-group-addon {
+        min-width: 35px;
+        border: none;
+        background: transparent;
+        position: absolute;
+        right: 0;
+        z-index: 9;
+        padding: 7px;
+    height: 100%;
+    }
+    .search-box i {
+        color: #a0a5b1;
+    font-size: 19px;
+    }
+
+    .navbar-expand .navbar-nav .nav-link
+    {
+      color:#000;
+    }
+  .navbar .nav-item i {
+    font-size: 18px;
+    color: #000
+  }
+  .navbar .dropdown-item i {
+    font-size: 16px;
+    min-width: 22px;
+  }
+  .navbar .nav-item.open > a {
+    background: none !important;
+  }
+  .navbar .dropdown-menu {
+    border-radius: 1px;
+    border-color: #e5e5e5;
+    box-shadow: 0 2px 8px rgba(0,0,0,.05);
+  }
+  .navbar .dropdown-menu li a {
+    color: #777;
+    padding: 8px 20px;
+    line-height: normal;
+  }
+  .navbar .dropdown-menu li a:hover, .navbar .dropdown-menu li a:active {
+    color: #333;
+  }
+  .navbar .dropdown-item .material-icons {
+    font-size: 21px;
+    line-height: 16px;
+    vertical-align: middle;
+    margin-top: -2px;
+  }
+  .navbar .badge {
+    background: #f44336;
+    font-size: 11px;
+    border-radius: 20px;
+    position: absolute;
+    min-width: 10px;
+    padding: 4px 6px 0;
+    min-height: 18px;
+    top: 5px;
+  }
+  .navbar ul.nav li a.notifications, .navbar ul.nav li a.messages {
+    position: relative;
+    margin-right: 10px;
+  }
+  .navbar ul.nav li a.messages {
+    margin-right: 20px;
+  }
+  .navbar a.notifications .badge {
+    margin-left: -8px;
+  }
+  .navbar a.messages .badge {
+    margin-left: -4px;
+  }
+  .navbar .active a, .navbar .active a:hover, .navbar .active a:focus {
+    background: transparent !important;
+  }
+  @media (min-width: 1200px){
+    .form-inline .input-group {
+      width: 300px;
+      margin-left: 30px;
+    }
+  }
+  @media (max-width: 1199px){
+    .form-inline {
+      display: block;
+      margin-bottom: 10px;
+    }
+    .input-group {
+      width: 100%;
+    }
+  }
+
+#wrapper {
+  padding-left: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+  padding-left: 250px;
+}
+
+#sidebar-wrapper {
+  z-index: 1000;
+  position: fixed;
+  right: 250px;
+  width: 0;
+  height: 100%;
+  left: 0;
+  margin-right: -320px;
+  overflow-y: auto;
+  background: #323d8c;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  width: 320px;
+}
+
+#page-content-wrapper {
+  width: 100%;
+  position: absolute;
+  padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+  position: absolute;
+  margin-right: 0px;
+}
+
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 320px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-nav li {
+  text-indent: 20px;
+  line-height: 40px;
+}
+
+.sidebar-nav li a {
+  display: block;
+  text-decoration: none;
+  color: #999999;
+}
+
+.sidebar-nav li a:hover {
+  text-decoration: none;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-nav li a:active, .sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+.sidebar-nav>.sidebar-brand {
+  height: 65px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  color:#fff;
+  font-weight: 600;
+}
+
+.sidebar-nav>.sidebar-brand h3
+{
+   font-weight: 500;
+}
+
+.sidebar-nav>.sidebar-brand a {
+  color: #999999;
+}
+
+.sidebar-nav li a
+{
+   color:#fff;
+}
+
+.sidebar-nav li
+{
+   border-left: 2px solid transparent;
+}
+
+.sidebar-nav li.active
+{
+   background-color: #010b6b;
+   border-left: 2px solid #fff;
+}
+
+.sidebar-nav .hv:hover {
+  background-color: #010b6b;
+   border-left: 2px solid #fff;
+}
+.sidebar-nav li a:hover
+{
+  background-color: transparent;
+}
+
+
+.sidebar-nav .hv a:hover
+{
+  background-color: #010b6b;
+}
+
+@media(min-width:768px) {
+  #wrapper {
+    padding-left: 0;
+  }
+  #wrapper.toggled {
+    padding-left: 320px;
+  }
+  #sidebar-wrapper {
+    width: 0;
+  }
+  #wrapper.toggled #sidebar-wrapper {
+    width: 320px;
+  }
+  #page-content-wrapper {
+    padding: 20px;
+    position: relative;
+  }
+  #wrapper.toggled #page-content-wrapper {
+    position: relative;
+    margin-right: 0;
+  }
+}
+
+.contBox h1
+{
+   font-size: 20px;
+   color: #363637;
+}
+
+.boxsh h3
+{
+    font-size: 22px;
+}
+
+.boxsh h3 a
+{
+    color: #000;
+}
+
+.boxsh p
+{
+    font-size: 16px;
+    color: #9b9b9b;
+}
+
+.boxsh {
+    box-shadow: 0 0 15px 0 rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.bgmain
+{
+   width: 100%;
+   height: 180px;
+   object-fit: cover;
+}
+
+.input-container .input-field
+{
+  width: 100%;
+  padding: 10px;
+  border-right: none;
+  outline: none;
+  border-top: none;
+  padding-left: 0;
+  border-left: none;
+  background-color: transparent;
+
+  border-bottom: 1px solid #cccccc;
+}
+
+.input-container {
+  display: flex;
+  width: 100%;
+  position: relative;
+  margin-bottom: 15px;
+  background-color: #fff;
+  height: 60px;
+  border-radius: 2px;
+}
+
+.filedForm .input-container .input-field {
+    padding-right: 45px;
+    padding-left: 15px;
+    border: 1px solid #bab9b9;
+    border-radius: 0;
+}
+
+.input-container .icon12 {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+    color: #b5b3b3 !important;
+    left: auto;
+    cursor: pointer;
+}
+
+.nmod .close
+{
+       position: absolute;
+    right: -9px;
+    top: -10px;
+    background-color: #000;
+    width: 24px;
+    height: 24px;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 50%;
+}
+
+.filedForm {
+    padding: 20px;
+}
+
+.modal
+{
+  background-color: rgba(50, 61, 140, 0.3);
+}
+
+.nndrop .dropdown-menu.show
+{
+  transform: translate(-295px, 27px) !important;
+  width: 321px;
+  padding: 12px;
+  border-radius: 0;
+  box-shadow: -1px 4px 5px 0 rgba(0,0,0,0.2);
+}
+
+.nndrop .dropdown-menu.show.activity
+{
+  transform: translate(-226px, 27px) !important;
+    width: 250px !important;
+}
+
+.nndrop .dropdown-toggle::after
+{
+   display: none;
+}
+
+.nndrop .dropdown-menu label {
+    min-width: 85px;
+    justify-content: flex-start;
+}
+
+.fbtn .btn {
+    border: 1px solid #c0c1bf;
+    width: 100px;
+    border-radius: 0;
+    color: #c0c1bf;
+    font-size: 14px;
+}
+
+.nndrop input
+{
+   background-color: #fff !important;
+   border-radius: 0;
+   color:#000;
+   border: 1px solid #c0c1bf;
+}
+
+.nndrop input:focus,
+.nndrop select:focus
+{
+    box-shadow: none;
+}
+
+.nndrop select
+{
+   border-radius: 0;
+      border: 1px solid #c0c1bf;
+}
+
+.fbtn .btn:hover
+{
+   background-color: #323d8c !important;
+   border-color: #323d8c !important;
+   color:#fff;
+}
+
+.dotse
+{
+   position: absolute;
+   top: 10px;
+   right: 12px;
+   color:#000;
+   font-size: 20px;
+}
+.boxsh .dropdown-toggle::after{
+  display:none;
+}
+.boxsh button#dropdownMenuButton {
+    border: 0px !important;
+    background: transparent;
+}
+
+.boxsh .dropdown {
+    top: 12px;
+    position: absolute;
+    right: 12px;
+}
+.boxsh .dropdown .fas{
+  font-size:20px;
+}
+.boxsh .dropdown-menu.show {
+    display: block;
+    margin-left: -30px;
+    min-width: 7rem;
+    border:0px;
+    top: 20px !important;
+    border-radius: 0px;
+    box-shadow: -1px 1px 6px 0px #999;
+}
+.boxsh .dropdown-menu.show:after{
+  content:"";
+   position: absolute;
+  right: 68px;
+  top: -15px;
+  border-top: none;
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+  border-bottom: 15px solid #fff;
+}
+
+.boxsh .dropdown button:focus {
+    outline: 1px dotted;
+    outline: 0px;
+}
+.fixProfle
+{
+   position: relative;
+    border-radius: 50%;
+   display: inline-block;
+     width: 100px;
+   height: 100px;
+}
+
+.fixProfle img
+{
+   width: 100px;
+   height: 100px;
+   border-radius: 50%;
+   object-fit: cover;
+}
+
+.fixProfle:hover:before
+{
+   content: "";
+   position: absolute;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   top: 0;
+   background-color: rgba(89,104,147,0.5);
+   border-radius: 50%;
+}
+
+.fixProfle .upimg
+{
+   display: none;
+}
+
+.fixProfle:hover .upimg
+{
+   display: block;
+}
+
+.fixProfle .upimg  img
+{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 27px;
+  height: 27px;
+  border-radius: 0;
+  object-fit: contain;
+}
+
+
+.insel input,
+.insel select
+{
+  height: 48px;
+  border-radius: 0;
+}
+
+.insel input:focus,
+.insel select:focus
+{
+   box-shadow: none;
+}
+
+.custombtns
+{
+   background-color: #010b6b !important;
+   border-color: #010b6b !important;
+   /* width: 120px; */
+   color:#fff !important;
+   font-size: 20px;
+    font-weight: 600;
+    margin: auto;
+    display: flow-root;
+    padding: 2% 5%;
+}
+
+.custombtns:hover
+{
+   opacity: 0.8;
+}
+.container-fluid.contBox.mt-4 input.form-control.ng-untouched.ng-pristine.ng-invalid {
+  border: 0px;
+  border-bottom: 1px #999 solid;
+  margin-bottom: 20px;
+}

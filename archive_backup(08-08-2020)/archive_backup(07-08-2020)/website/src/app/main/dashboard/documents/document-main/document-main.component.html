@@ -1,0 +1,17 @@
+<div id="page-content-wrapper">
+  <div class="container-fluid contBox mt-4">
+    <h1 class="d-flex justify-content-between">
+      All Folders
+    </h1>
+    <div class="row mt-4 mat-elevation-z8">
+      <ng-container *ngFor="let type of types">
+        <div class="col-md-3 col-sm-6 folder-container">
+          <a [routerLink]="'/dashboard/document/' + type?._id" [ngStyle]="{'color': type?.colorCode}">
+            <i class="fa fa-folder fa-5x fa-2x" aria-hidden="true"></i>
+            <span style="color: black;">{{ type?.type }}</span></a
+          >
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+<nav class="navbar navbar-expand navbar-white fixed-top">
+  <a id="menu-toggle" class="navbar-brand">
+    <img
+      src="assets/images/logo.jpg"
+      class="img-fluid"
+      width="250"
+      id="icon"
+      alt="Logo"
+      (click)="onChangeRoute()"
+    />
+    <span class="navbar-toggler-icon" (click)="onToggleNavbar()"
+      ><img src="assets/images/toggle.png" class="img-fluid" width="40"
+    /></span>
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarsExample02"
+    aria-controls="navbarsExample02"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarsExample02">
+    <ul class="nav navbar-nav navbar-right ml-auto">
+      <!-- <li class="nav-item">
+        <a class="nav-link messages clickable">
+          <i class="far fa-bell"></i>
+        </a>
+      </li> -->
+      <li class="nav-item dropdown">
+        <a
+          href="#"
+          data-toggle="dropdown"
+          class="nav-link dropdown-toggle user-action"
+        >
+          <img
+            [src]="imgUrl + (userDetails | async)?.profileImage"
+            onerror="this.src='https://www.tutorialrepublic.com/examples/images/avatar/2.jpg'"
+            class="avatar"
+            alt="Avatar"
+          />
+          {{
+            (userDetails | async)?.firstname +
+              " " +
+              (userDetails | async)?.lastname | titlecase
+          }}
+          <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <a routerLink="/dashboard/profile" class="dropdown-item"
+              ><i class="fas fa-user"></i> Profile</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/dashboard/profile/change-password"
+              class="dropdown-item"
+              ><i class="fas fa-sliders-h"></i> Settings</a
+            >
+          </li>
+          <li class="divider dropdown-divider"></li>
+          <li>
+            <a (click)="onLogout()" class="dropdown-item clickable"
+              ><i class="fas fa-sign-out-alt"></i> Logout</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>

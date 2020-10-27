@@ -1,0 +1,1043 @@
+:root {
+  --input-padding-x: 1.5rem;
+  --input-padding-y: .75rem;
+}
+
+
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,ol,p
+{
+   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a:hover
+{
+   text-decoration: none;
+}
+
+h1,h2,h3,h4,h5,h6,p
+{
+   margin: 0;
+   padding: 0;
+}
+
+@font-face {
+font-family: 'Myriad Pro Regular';
+font-style: normal;
+font-weight: normal;
+src: local('../fonts/Myriad Pro Regular'), local('../fonts/MYRIADPRO-REGULAR.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Myriad Pro Condensed';
+font-style: normal;
+font-weight: normal;
+src: local('../fonts/Myriad Pro Condensed'), local('../fonts/MYRIADPRO-COND.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Myriad Pro Condensed Italic';
+font-style: normal;
+font-weight: normal;
+src: local('../fonts/Myriad Pro Condensed Italic'), local('../fonts/MYRIADPRO-CONDIT.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Myriad Pro Light';
+font-style: normal;
+font-weight: normal;
+src: local('../fonts/Myriad Pro Light'), local('../fonts/MyriadPro-Light.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Myriad Pro Semibold';
+font-style: normal;
+font-weight: normal;
+src: local('../fonts/Myriad Pro Semibold'), local('../fonts/MYRIADPRO-SEMIBOLD.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Myriad Pro Semibold Italic';
+font-style: normal;
+font-weight: normal;
+src: local('../fonts/Myriad Pro Semibold Italic'), local('../fonts/MYRIADPRO-SEMIBOLDIT.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Myriad Pro Bold Condensed';
+font-style: normal;
+font-weight: normal;
+src: local('../fonts/Myriad Pro Bold Condensed'), local('../fonts/MYRIADPRO-BOLDCOND.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Myriad Pro Bold';
+font-style: normal;
+font-weight: normal;
+src: local('../fonts/Myriad Pro Bold'), local('../fonts/MYRIADPRO-BOLD.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Myriad Pro Bold Italic';
+font-style: normal;
+font-weight: normal;
+src: local('../fonts/Myriad Pro Bold Italic'), local('../fonts/MYRIADPRO-BOLDIT.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Myriad Pro Bold Condensed Italic';
+font-style: normal;
+font-weight: normal;
+src: local('../fonts/Myriad Pro Bold Condensed Italic'), local('../fonts/MYRIADPRO-BOLDCONDIT.woff') format('woff');
+}
+
+body,html
+{
+   height: 100%;
+   font-family: 'Myriad Pro Regular';
+}
+
+
+/* STRUCTURE */
+
+.loginbox
+{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  padding: 20px;
+}
+
+.loginbox .formContent {
+
+  background: #fff;
+  padding: 30px;
+  width: 90%;
+  max-width: 650px;
+  position: relative;
+  padding: 60px 100px;
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+.loginbox .formFooter
+{
+  background-color: #f6f6f6;
+  border-top: 1px solid #dce8f1;
+  padding: 25px;
+  text-align: center;
+  -webkit-border-radius: 0 0 10px 10px;
+  border-radius: 0 0 10px 10px;
+}
+
+/* TABS */
+
+.loginbox h2.inactive {
+  color: #cccccc;
+}
+
+.loginbox h2.active {
+  color: #0d0d0d;
+  border-bottom: 2px solid #5fbae9;
+}
+
+/* FORM TYPOGRAPHY*/
+
+
+/* ANIMATIONS */
+
+/* Simple CSS3 Fade-in-down Animation */
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+/* Simple CSS3 Fade-in Animation */
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fadeIn {
+  opacity:0;
+  -webkit-animation:fadeIn ease-in 1;
+  -moz-animation:fadeIn ease-in 1;
+  animation:fadeIn ease-in 1;
+
+  -webkit-animation-fill-mode:forwards;
+  -moz-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+
+  -webkit-animation-duration:1s;
+  -moz-animation-duration:1s;
+  animation-duration:1s;
+}
+
+.fadeIn.first {
+  -webkit-animation-delay: 0.4s;
+  -moz-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+
+.fadeIn.second {
+  -webkit-animation-delay: 0.6s;
+  -moz-animation-delay: 0.6s;
+  animation-delay: 0.6s;
+}
+
+.fadeIn.third {
+  -webkit-animation-delay: 0.8s;
+  -moz-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+}
+
+.fadeIn.fourth {
+  -webkit-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  animation-delay: 1s;
+}
+
+
+.custombtn {
+  border: none;
+  background-color: #161966;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 2px 40px;
+  display: inline-block;
+  text-transform: uppercase;
+  line-height: 2.7em;
+  font-weight: 400;
+  font-size: 1em;
+  outline: none;
+  position: relative;
+  font-size: 16px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.custombtn:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  bottom: 50%;
+  left: 0;
+  border-radius: inherit;
+  background-color: rgba(255, 255, 255, 0.20);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.custombtn:hover:after,
+.custombtn.hover:after {
+  top: 0;
+  bottom: 0;
+}
+
+.custombtn:hover,
+.custombtn:focus,
+.custombtn:active {
+    color: #fff;
+    background-color: #161966 !important;
+    border-color: #161966 !important;
+    box-shadow: none !important
+}
+
+.input-container .input-field
+{
+  width: 100%;
+  padding: 10px;
+  border-right: none;
+  outline: none;
+  border-top: none;
+  padding-left: 0;
+  border-left: none;
+  background-color: transparent;
+
+  border-bottom: 1px solid #cccccc;
+}
+
+.input-container {
+  display: flex;
+  width: 100%;
+  position: relative;
+  margin-bottom: 15px;
+  background-color: #fff;
+  height: 60px;
+  border-radius: 2px;
+}
+
+.loginbox img
+{
+   margin-bottom: 35px;
+}
+
+.fp
+{
+   color:#161966;
+   font-weight: 600;
+}
+
+.fp:hover
+{
+   color:#000;
+   font-weight: 600;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+    color: #fff;
+    border-color: #161966;
+    background-color: #161966;
+}
+
+.input-container .icon {
+    position: absolute;
+    right: 0;
+    top: 20px;
+    color:#b5b3b3 !important;
+    left: auto;
+    cursor: pointer;
+}
+
+.loginbox.singup .input-container .icon
+{
+   left: 13px;
+    right: initial;
+    top: 18px;
+}
+
+.loginbox.singup .input-container .input-field {
+    padding-left: 45px;
+    border: 1px solid #bab9b9;
+    border-radius: 5px;
+}
+
+.input-container .icon12 {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+    color:#b5b3b3 !important;
+    left: auto;
+    cursor: pointer;
+}
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #000;
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Navbar */
+
+.navbar-light .navbar-nav .nav-link
+{
+    text-transform: uppercase;
+    color: #000;
+    font-size: 16px;
+    padding: 0 30px;
+    font-weight: 600;
+}
+
+.navbar-light .navbar-nav .nav-link:last-child
+{
+    padding-right: 0;
+}
+
+.navbar-light .navbar-nav .nav-link:hover
+{
+   color:#31348d;
+}
+
+.navbar-light
+{
+   background-color: #fff;
+}
+
+.bgimg
+{
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.banner
+{
+   height: 100%;
+   position: relative;
+}
+
+.shapeTop
+{
+  width: 100%;
+  height: 100px;
+  width: 100%;
+  height: 130px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.shapeBtom
+{
+  width: 100%;
+  height: 90px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  -webkit-transform: rotate(-180deg);
+     -moz-transform: rotate(-180deg);
+      -ms-transform: rotate(-180deg);
+       -o-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+
+}
+
+.banner h1
+{
+   color:#fff;
+   font-size: 50px;
+   font-family: 'Myriad Pro Semibold';
+   font-weight: 600;
+}
+
+.banner h3
+{
+   font-size: 20px;
+   font-weight: 600;
+   color:#fff;
+}
+
+.banner p
+{
+   font-size: 16px;
+   color:#fff;
+}
+
+/* About Us */
+.secPad
+{
+   padding: 80px 0;
+}
+
+.bgBlue
+{
+   background-color: #31348d;
+}
+
+h2
+{
+   font-family: 'Myriad Pro Semibold';
+   font-size: 50px;
+   color: #31348d;
+}
+
+.lineDivider
+{
+   width: 100px;
+   height: 2px;
+   background-color: #31348d;
+   margin: 0 auto;
+}
+
+.aboutBox h2
+{
+   color:#fff;
+}
+
+.aboutBox p
+{
+   color:#fff;
+   margin: 10px 0 20px;
+       font-size: 25px;
+}
+
+.posrel
+{
+   position: relative;
+}
+
+.aboutBox {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0 60px;
+}
+
+.custombtn.readmore
+{
+   background-color: #fff;
+   border-radius: 100px;
+   color:#000;
+   font-weight: 600;
+   font-size: 20px;
+   letter-spacing: 1.5px;
+}
+
+.custombtn.readmore:hover:after, .custombtn.readmore.hover:after {
+    top: 0;
+    bottom: 0;
+    color:#fff;
+        opacity: .5;
+}
+
+.custombtn.readmore:hover
+{
+  color:#fff;
+}
+
+.fixImg
+{
+   height: 700px;
+   object-fit: cover;
+}
+
+.abFiximg
+{
+  height: 300px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.aboutb .aboutContent
+{
+   padding: 30px 15px;
+   background-color: #31348d;
+}
+
+.aboutb .aboutContent h3
+{
+   font-size: 22px;
+   margin-bottom: 10px;
+   color:#fff;
+}
+
+.aboutb .aboutContent p
+{
+   font-size: 16px;
+   color:#fff;
+}
+
+.aboutb .aboutContent h3 a
+{
+  color:#fff;
+}
+
+.aboutb .aboutContent h3 a:hover
+{
+  color:#000;
+}
+
+/* Instagram Slider */
+.slider {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.slick-slide {
+  margin: 0 5px;
+}
+.slick-list {
+  margin: 0px -5px 0px -5px;
+}
+button.slick-next, button.slick-next:hover {
+position: absolute;
+    top: 45%;
+    right: -25px;
+    z-index: 1;
+    width: 20px;
+    height: 30px;
+    background-image: url(../images/lefrarrow.png);
+    background-size: cover;
+    background-position-x: right;
+    transform: rotate(180deg);
+}
+button.slick-prev, button.slick-prev:hover {
+    position: absolute;
+    top: 45%;
+    left: -25px;
+    z-index: 1;
+    width: 20px;
+    height: 30px;
+    background-image: url(../images/lefrarrow.png);
+    background-size: cover;
+    background-position-x: right;
+
+}
+.slick-prev:before, .slick-next:before {
+  font-size: 70px;
+  color: #EA8496;
+  line-height: inherit;
+  font-weight: bold;
+}
+.slider img {
+  height: 324px;
+  object-fit: cover;
+}
+
+/* Slick Slider Styles -- Provided by https://kenwheeler.github.io/slick/ */
+/* Slider */
+.slick-slider
+{
+    position: relative;
+
+    display: block;
+
+    -moz-box-sizing: border-box;
+         box-sizing: border-box;
+
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+        touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list
+{
+    position: relative;
+
+    display: block;
+    overflow: hidden;
+
+    margin: 0;
+    padding: 0;
+}
+.slick-list:focus
+{
+    outline: none;
+}
+.slick-list.dragging
+{
+    cursor: pointer;
+    cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list
+{
+    -webkit-transform: translate3d(0, 0, 0);
+       -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+         -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+}
+
+.slick-slide:focus,
+.slick-slide:active,
+.slick-slide:hover
+{
+   outline: none;
+}
+
+.slick-track
+{
+    position: relative;
+    top: 0;
+    left: 0;
+
+    display: block;
+}
+.slick-track:before,
+.slick-track:after
+{
+    display: table;
+
+    content: '';
+}
+.slick-track:after
+{
+    clear: both;
+}
+.slick-loading .slick-track
+{
+    visibility: hidden;
+}
+
+.slick-slide
+{
+    display: none;
+    float: left;
+
+    height: 100%;
+    min-height: 1px;
+}
+[dir='rtl'] .slick-slide
+{
+    float: right;
+}
+.slick-slide img
+{
+    display: block;
+}
+.slick-slide.slick-loading img
+{
+    display: none;
+}
+.slick-slide.dragging img
+{
+    pointer-events: none;
+}
+.slick-initialized .slick-slide
+{
+    display: block;
+}
+.slick-loading .slick-slide
+{
+    visibility: hidden;
+}
+.slick-vertical .slick-slide
+{
+    display: block;
+
+    height: auto;
+
+    border: 1px solid transparent;
+}
+.slick-arrow.slick-hidden {
+    display: none;
+}
+
+/* Arrows */
+.slick-prev,
+.slick-next
+{
+    font-size: 0;
+    line-height: 0;
+
+    position: absolute;
+    top: 50%;
+
+    display: block;
+
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    padding: 0;
+
+    cursor: pointer;
+
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+.slick-prev:hover,
+.slick-prev:focus,
+.slick-next:hover,
+.slick-next:focus
+{
+    color: transparent;
+    outline: none;
+    background: transparent;
+}
+.slick-prev:hover:before,
+.slick-prev:focus:before,
+.slick-next:hover:before,
+.slick-next:focus:before
+{
+    opacity: 1;
+}
+.slick-prev.slick-disabled:before,
+.slick-next.slick-disabled:before
+{
+    opacity: .25;
+}
+
+.slick-prev:before,
+.slick-next:before
+{
+    font-family: 'slick';
+    font-size: 20px;
+    line-height: 1;
+
+    opacity: .75;
+    color: white;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-prev
+{
+    left: -25px;
+}
+[dir='rtl'] .slick-prev
+{
+    right: -25px;
+    left: auto;
+}
+.slick-prev:before
+{
+    content: '';
+}
+[dir='rtl'] .slick-prev:before
+{
+    content: '';
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.slick-next
+{
+    right: -25px;
+}
+[dir='rtl'] .slick-next
+{
+    right: auto;
+    left: -25px;
+}
+.slick-next:before
+{
+    content: '';
+}
+[dir='rtl'] .slick-next:before
+{
+    content: '';
+}
+
+/* Dots */
+.slick-slider
+{
+    margin-bottom: 0;
+    max-width: 100%;
+}
+
+.slick-dots
+{
+    position: absolute;
+    bottom: -45px;
+
+    display: block;
+
+    width: 100%;
+    padding: 0;
+
+    list-style: none;
+
+    text-align: center;
+}
+.slick-dots li
+{
+    position: relative;
+
+    display: inline-block;
+
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+    padding: 0;
+
+    cursor: pointer;
+}
+.slick-dots li button
+{
+    font-size: 0;
+    line-height: 0;
+
+    display: block;
+
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+
+    cursor: pointer;
+
+    color: transparent;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+.slick-dots li button:hover,
+.slick-dots li button:focus
+{
+    outline: none;
+}
+.slick-dots li button:hover:before,
+.slick-dots li button:focus:before
+{
+    opacity: 1;
+}
+.slick-dots li button:before
+{
+    font-family: 'slick';
+    font-size: 6px;
+    line-height: 20px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 20px;
+    height: 20px;
+
+    content: '•';
+    text-align: center;
+
+    opacity: .25;
+    color: black;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.slick-dots li.slick-active button:before
+{
+    opacity: .75;
+    color: black;
+}
+
+.instagramfeed {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Footer */
+footer
+{
+   position: relative;
+}
+footer h3
+{
+    color: #fff;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+footer p
+{
+   color:#fff;
+}
+
+footer ul li a
+{
+   color:#fff;
+   letter-spacing: 0.8px;
+}
+
+footer ul li
+{
+   margin-bottom: 8px;
+}
+
+footer ul li:last-child
+{
+   margin-bottom: 0;
+}
+
+footer ul li a:hover
+{
+   color:#000;
+}
+
+.copyright
+{
+   text-align: center;
+}
+
+.copyright p
+{
+   color:#31348d;
+   font-size: 16px;
+   padding: 10px;
+   letter-spacing: 0.9px;
+}
+
+.socialIcon a
+{
+   color: #31348d;
+   display: inline-block;
+   width: 30px;
+   height: 30px;
+   line-height: 32px;
+   background-color: #fff;
+   text-align: center;
+   border-radius: 50%;
+   margin-right: 6px;
+}
+
+.socialIcon a:hover
+{
+   background-color: #000;
+   color:#fff;
+}
+
+footer .shapeTop {
+    top: -97px;
+}
+
+.mt60
+{
+   margin-top: 100px;
+}
+
+.error {
+  color: darkred;
+}

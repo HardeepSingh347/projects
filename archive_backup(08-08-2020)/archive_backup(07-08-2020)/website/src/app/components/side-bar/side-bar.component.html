@@ -1,0 +1,35 @@
+<div id="sidebar-wrapper">
+  <ul class="sidebar-nav">
+    <li class="sidebar-brand mb-2"><h3>{{ userDetails?.role | userType }} Screen</h3></li>
+    <li class="pl-4 mb-2 hv">
+      <a routerLink="/dashboard/document" routerLinkActive="active"
+        ><img src="assets/images/folder.png" class="mr-3 fw1" width="20" /> File</a
+      >
+    </li>
+    <li class="pl-4 mb-2 hv" *ngIf="userDetails?.role !== 2">
+      <a routerLink="/dashboard/user" routerLinkActive="active"
+        ><img src="assets/images/usernew.png" class="mr-3 fw1" width="20" />Active User</a
+      >
+    </li>
+    <!-- <li class="pl-4 mb-2 hv">
+      <a routerLink="/dashboard/banned-user" routerLinkActive="active"
+        ><img src="assets/images/usernew.png" class="mr-3 fw1" width="20" />Banned User</a
+      >
+    </li> -->
+    <li class="pl-4 mb-2 hv" *ngIf="userDetails?.role !== 2">
+      <a routerLink="/dashboard/user/suspended-user" routerLinkActive="active"
+        ><img src="assets/images/usernew.png" class="mr-3 fw1" width="20" />Suspended User</a
+      >
+    </li>
+    <li class="pl-4 mb-2 hv" *ngIf="userDetails?.role === 0">
+      <a routerLink="/dashboard/company" routerLinkActive="active"
+        ><img src="assets/images/usernew.png" class="mr-3 fw1" width="20" />Company</a
+      >
+    </li>
+    <li class="pl-4 mb-2 hv" *ngIf="userDetails?.role === 0">
+      <a routerLink="/dashboard/category" routerLinkActive="active"
+        ><img src="assets/images/usernew.png" class="mr-3 fw1" width="20" />Folders</a
+      >
+    </li>
+  </ul>
+</div>

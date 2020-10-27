@@ -1,0 +1,168 @@
+@media screen and (max-width: 1260px)
+{
+	
+}
+
+@media screen and (max-width: 1024px)
+{ 
+   
+}
+
+@media screen and (max-width: 991px)
+{ 
+	.aboutBox h2
+	{
+		font-size: 32px;
+	}
+
+	.mt25 {
+	    margin-bottom: 30px;
+	}
+
+	.mt25:last-child
+	{
+		margin-bottom: 0
+	}
+
+	.aboutBox {
+	    position: absolute;
+	    top: 50%;
+	    transform: translateY(-50%);
+	    padding: 0 25px;
+	}
+
+	.aboutBox p {
+		color: #fff;
+		margin: 10px 0 20px;
+		font-size: 18px;
+	}
+}
+
+@media screen and (max-width: 768px)
+{ 
+   
+}
+
+@media screen and (max-width: 767px)
+{
+   	.navbar-light .navbar-brand img {
+	    width: 205px;
+	}
+
+	.navbar-light .navbar-nav .nav-link
+	{
+		padding: 15px 15px;
+	}
+
+	.aboutBox
+	{
+		position: relative;
+		top: 0;
+		padding: 50px 15px;
+		transform: translateY(0);;
+	}
+
+	.inmobile .posrel {
+	    order: 2;
+	}
+	
+	.custombtn.readmore
+	{
+		font-size: 14px;
+	}
+
+	.aboutb
+	{
+		margin-bottom: 25px;
+	}
+
+	.mt25 {
+	    margin-bottom: 30px;
+	}
+
+	.mt25:last-child
+	{
+		margin-bottom: 0
+	}
+	
+	h2
+	{
+		font-size: 35px;
+	}
+
+	.banner h1
+	{
+		font-size: 35px;
+	}
+
+	.aboutBox p
+	{
+		font-size: 17px;
+	}
+
+	.custombtn
+	{
+		padding: 2px 15px;
+	}
+
+	.loginbox
+	{
+		padding: 0;
+	}
+
+	.loginbox .formContent
+	{
+		width: 95%;
+		    padding: 30px 15px;
+	}
+
+	.copyright p
+	{
+		font-size: 14px;
+	}
+
+	.fixImg {
+	    height: 400px;
+	    object-fit: cover;
+	}
+
+	.aboutBox h2 {
+	    color: #fff;
+	    font-size: 40px;
+	}
+
+	.navbar
+	{
+		flex-direction: column;
+		align-items: flex-end;
+	}
+
+	.navbar .navbar-brand img
+	{
+		position: relative;
+		left: -8px;
+	}
+
+	.navbar .navbar-brand {
+	     display: flex;
+	    width: 100%;
+	    padding-right: 0;
+	    margin-right: 0;
+	    align-items: center;
+	    justify-content: space-between;
+	}
+
+	.contBox
+	{
+		padding-top: 40px;
+	}
+
+	#wrapper.toggled {
+    padding-left: 0;
+}
+}
+
+@media screen and (max-width: 320px)
+{
+  
+}

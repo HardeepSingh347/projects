@@ -1,0 +1,247 @@
+<div id="page-content-wrapper">
+  <div class="container" *ngIf="isProgress">
+    <mat-progress-bar
+      color="accent"
+      mode="determinate"
+      [value]="progress"
+    ></mat-progress-bar>
+  </div>
+  <div class="container-fluid contBox mt-4">
+    <h1>{{ mode | titlecase }} Document</h1>
+    <div class="row mt-4">
+      <div class="col-md-4" *ngIf="mode !== 'view'">
+        <form
+          class="mt-3 insel"
+          #documentUploadForm="ngForm"
+          (submit)="onDocumentUpload(documentUploadForm)"
+        >
+          <img *ngIf="mode === 'edit'" [src]="documentUrl | docType" alt="" />
+          <!-- if new document add page -->
+          <input
+            *ngIf="mode === 'create'"
+            type="file"
+            class="form-control"
+            placeholder="Select File"
+            name="document"
+            (change)="onChangeFile($event.target.files)"
+            ngModel
+            required
+          />
+          <mat-error
+            *ngIf="
+              (documentUploadForm.submitted ||
+                documentUploadForm.controls['document']?.touched) &&
+              documentUploadForm.controls['document'].invalid &&
+              !documentUploadForm?.controls.document?.hasError('unique')
+            "
+          >
+            Please select a document to upload
+          </mat-error>
+          <mat-error
+            *ngIf="
+              (documentUploadForm.submitted ||
+                documentUploadForm.controls['document']?.touched) &&
+              documentUploadForm?.controls.document?.hasError('unique')
+            "
+          >
+            Max upload size is 500 MBs
+          </mat-error>
+
+          <mat-form-field class="mb-3">
+            <mat-label>Tags</mat-label>
+            <input
+              matInput
+              type="text"
+              name="tags"
+              [disabled]="mode === 'edit'"
+              [ngModel]="tags"
+              required
+            />
+            <mat-error>
+              Please fill this field
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="mb-3">
+            <mat-label>Select Document Type</mat-label>
+            <mat-select
+              name="documentType"
+              [ngModel]="documentType"
+              [disabled]="mode === 'view'"
+              required
+              #documentTypeSelect
+            >
+              <mat-option value="public">
+                Public
+              </mat-option>
+              <mat-option value="classified">
+                Classified
+              </mat-option>
+            </mat-select>
+            <mat-error>
+              Please select document type
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="mb-3">
+            <mat-label>Select Type</mat-label>
+            <mat-select
+              name="type"
+              [ngModel]="type"
+              [disabled]="mode === 'edit'"
+              required
+              #typeSelect
+            >
+              <mat-option *ngFor="let type of types" [value]="type?._id">
+                {{ type?.type }}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+              Please select type
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="mb-3">
+            <mat-label>Select Sector</mat-label>
+            <mat-select
+              name="sector"
+              [ngModel]="sector"
+              [disabled]="mode === 'edit'"
+              required
+              #sectorSelect
+            >
+              <mat-option *ngFor="let sector of sectors" [value]="sector">
+                {{ sector }}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+              Please select sector
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="mb-3">
+            <mat-label>Select Period</mat-label>
+            <mat-select
+              name="period"
+              [(ngModel)]="period"
+              [disabled]="mode === 'edit'"
+              required
+              #periodSelect
+            >
+              <mat-option *ngFor="let period of periods" [value]="period">
+                {{ period }}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+              Please select period
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="mb-3" *ngIf="period === 'Political/ Party'">
+            <mat-label>Select Political Party</mat-label>
+            <mat-select
+              name="party"
+              [ngModel]="party"
+              [disabled]="mode === 'edit'"
+              required
+              #politicalPartySelect
+            >
+              <mat-option
+                *ngFor="let party of politicalParties"
+                [value]="party"
+              >
+                {{ party }}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+              Please select political party
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field *ngIf="userDetails?.role === 0">
+            <mat-label>Company</mat-label>
+            <mat-select
+              name="companyId"
+              [ngModel]="docDetails?.companyId._id"
+              [disabled]="mode === 'edit'"
+              required
+            >
+              <mat-option
+                *ngFor="let company of companies$ | async"
+                [value]="company._id"
+                >{{ company.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error>Pleas choose a company.</mat-error>
+          </mat-form-field>
+
+          <button
+            type="submit"
+            *ngIf="mode !== 'view'"
+            class="custombtns"
+            [disabled]="isProgress"
+          >
+            <span *ngIf="mode === 'create'">Upload File</span>
+            <span *ngIf="mode === 'edit'">Update File</span>
+          </button>
+        </form>
+      </div>
+      <div class="col-md-6" *ngIf="mode === 'view'">
+        <!-- if new document view or update page, in update page no one can edit or update, only document type (public/classified) can be updated -->
+        <div class="view-datas">
+          <img
+            *ngIf="mode === 'view' || mode === 'edit'"
+            [src]="documentUrl | docType"
+            alt=""
+          />
+
+          <div class="inr-data">
+            <p>Name:</p>
+            <span>{{ docDetails?.name }}</span>
+          </div>
+          <div class="inr-data">
+            <p>Document Type:</p>
+            <span>{{ docDetails?.documentType }}</span>
+          </div>
+          <div class="inr-data">
+            <p>Type:</p>
+            <span>{{ docDetails?.type }}</span>
+          </div>
+          <div class="inr-data">
+            <p>Sector:</p>
+            <span>{{ docDetails?.sector }}</span>
+          </div>
+          <div class="inr-data">
+            <p>Period:</p>
+            <span>{{ docDetails?.period?.period }}</span>
+          </div>
+          <div class="inr-data" *ngIf="docDetails?.period?.politicalParty">
+            <p>Political Party:</p>
+            <span>{{ docDetails?.period?.politicalParty }}</span>
+          </div>
+          <div class="inr-data">
+            <p>Tags:</p>
+            <span>{{ docDetails?.tags }}</span>
+          </div>
+          <div class="inr-data">
+            <p>Size:</p>
+            <span>{{ docDetails?.size / 1048576 | number }} MBs</span>
+          </div>
+          <div class="inr-data">
+            <p>Uploaded By:</p>
+            <span>{{
+              docDetails?.uploadedBy?.firstname +
+                " " +
+                docDetails?.uploadedBy?.lastname | titlecase
+            }}</span>
+          </div>
+          <a
+            class="file-download"
+            (click)="onDownloadDocument(docDetails?._id, docDetails?.name)"
+            ><i class="fa fa-cloud-download" aria-hidden="true"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

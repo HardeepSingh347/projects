@@ -1,0 +1,226 @@
+<div id="page-content-wrapper">
+  <div class="container-fluid contBox mt-4">
+    <h1 class="d-flex justify-content-between">
+      Suspended Users
+      <!-- <a routerLink="/dashboard/user/create" [queryParams]="{ type: 'user' }">
+        <img src="assets/images/newaduser.png" alt="" width="22" />
+      </a> -->
+    </h1>
+
+    <!-- <div class="row mt-4">
+      <ng-container *ngFor="let user of (users$ | async) | paginate: { itemsPerPage: 3, currentPage: pageNumber }"> -->
+    <!-- <div class="col-md-6 col-lg-4">
+          <div class="boxsh">
+            <img
+              [src]="imgUrl + user.profileImage"
+              [alt]="(user.firstname + ' ' + user.lastname | titlecase)"
+              class="img-fluid bgmain"
+            />
+            <div class="d-flex p-3">
+              <div>
+                <img
+                  src="assets/images/arrow.png"
+                  alt="Arrow"
+                  width="40"
+                  class="img-fluid"
+                />
+              </div>
+              <div class="ml-3">
+                <h3><a href="#">{{ user?.firstname + " " + user?.lastname | titlecase }}</a></h3>
+                <p>{{ user?.email }}</p>
+              </div>
+            </div>
+
+            <div class="dropdown">
+              <button
+                class="dropdown-toggle"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <i class="fas fa-ellipsis-v"></i>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" [routerLink]="'/dashboard/user/edit/' + user?._id" [queryParams]="{ type: 'user' }">Update</a>
+                <a class="dropdown-item" [routerLink]="'/dashboard/user/view/' + user?._id" [queryParams]="{ type: 'user' }">View</a>
+              </div>
+            </div>
+          </div>
+        </div> -->
+    <!-- <div class="col-md-6 col-lg-4">
+          <div class="boxsh">
+            <span class="suspended" *ngIf="user?.suspended === true">Suspended</span>
+            <img
+              [src]="imgUrl + user?.profileImage"
+              [alt]="user.firstname + ' ' + user.lastname | titlecase"
+              class="img-fluid bgmain"
+            />
+            <div class="d-flex p-3">
+              <div class="ml-3">
+                <h3>
+                  {{ user?.firstname + " " + user?.lastname | titlecase }}
+                </h3>
+                <p>{{ user?.createdAt | date }}</p>
+                <p>{{ ((document?.size) / 1048576) | number }} MBs</p>
+              </div>
+              <div class="ml-auto">
+                <div class="dropdown">
+                  <button
+                    class="btn btn-secondary dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                  </button>
+                  <div
+                    class="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton"
+                  >
+                    <a
+                      class="dropdown-item"
+                      [routerLink]="'/dashboard/user/edit/' + user?._id"
+                      [queryParams]="{ type: 'user' }"
+                      >Update</a
+                    >
+                    <a
+                      class="dropdown-item"
+                      [routerLink]="'/dashboard/user/view/' + user?._id"
+                      [queryParams]="{ type: 'user' }"
+                      >View</a
+                    >
+                    <a
+                      class="dropdown-item"
+                      (click)="onSuspendUser(user?._id)"
+                      >Suspend</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+    <!-- </ng-container>
+    </div> -->
+    <div class="row">
+      <div class="col-md-3 search_box">
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            placeholder="Search..."
+            name="searchValue"
+            (keyup.enter)="applySearch()"
+            [(ngModel)]="searchValue"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-6 search_button_box">
+        <button
+          type="button"
+          class="btn btn-outline-primary search_button_button"
+          title="Search"
+          (click)="applySearch()"
+        >
+          <mat-icon>search</mat-icon>
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-danger search_button_button"
+          title="Reset"
+          (click)="onResetFilters()"
+        >
+          <mat-icon>replay</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="mat-elevation-z8">
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        matSort
+        (matSortChange)="sortData($event)"
+        style="width: 100%;"
+      >
+        <ng-container matColumnDef="firstname">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Firstname
+          </th>
+          <td mat-cell *matCellDef="let row">{{ row?.firstname }}</td>
+        </ng-container>
+        <ng-container matColumnDef="lastname">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Lastname
+          </th>
+          <td mat-cell *matCellDef="let row">{{ row?.lastname }}</td>
+        </ng-container>
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Email
+          </th>
+          <td mat-cell *matCellDef="let row">{{ row?.email }}</td>
+        </ng-container>
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Phone
+          </th>
+          <td mat-cell *matCellDef="let row">{{ row?.phone }}</td>
+        </ng-container>
+        <ng-container matColumnDef="company">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Company
+          </th>
+          <td mat-cell *matCellDef="let row">{{ row?.company }}</td>
+        </ng-container>
+        <ng-container matColumnDef="userType">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Type
+          </th>
+          <td mat-cell *matCellDef="let row">{{ row?.role | userType }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="createdAt">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Created At
+          </th>
+          <td mat-cell *matCellDef="let row" style="min-width: 170px;">
+            {{ row?.createdAt | date: "medium" }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>
+            Actions
+          </th>
+          <td mat-cell *matCellDef="let row" class="td-actions">
+            <div class="action-col">
+              <button
+                mat-raised-button=""
+                type="button"
+                class="btn btn-success btn-link"
+                (click)="onView(row?._id)"
+              >
+                <span class="mat-button-wrapper">
+                  <i class="material-icons">visibility</i>
+                </span>
+                <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                <div class="mat-button-focus-overlay"></div>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <mat-paginator
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="pageEvent = onPageChange($event)"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</div>

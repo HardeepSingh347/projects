@@ -1,0 +1,9 @@
+<app-header></app-header>
+<div id="wrapper" [ngClass]="{'toggled': toggledStatus}">
+  <app-side-bar></app-side-bar>
+  <!-- /#sidebar-wrapper -->
+  <!-- Page Content -->
+  <router-outlet></router-outlet>
+</div>
+
+<app-footer></app-footer>

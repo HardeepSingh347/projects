@@ -1,0 +1,131 @@
+<div id="page-content-wrapper">
+  <div class="container-fluid contBox mt-4">
+    <h1 class="d-flex justify-content-between">
+      Folders
+      <a routerLink="/dashboard/category/create">
+        <img src="assets/images/newaduser.png" alt="" width="22" />
+      </a>
+    </h1>
+    <div class="row">
+      <div class="col-md-3 search_box">
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            placeholder="Search..."
+            name="searchValue"
+            (keyup.enter)="applySearch()"
+            [(ngModel)]="searchValue"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-6 search_button_box">
+        <button
+          type="button"
+          class="btn btn-outline-primary search_button_button"
+          title="Search"
+          (click)="applySearch()"
+        >
+          <mat-icon>search</mat-icon>
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-danger search_button_button"
+          title="Reset"
+          (click)="onResetFilters()"
+        >
+          <mat-icon>replay</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="mat-elevation-z8">
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        matSort
+        (matSortChange)="sortData($event)"
+        style="width: 100%;"
+      >
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Name
+          </th>
+          <td mat-cell *matCellDef="let row">{{ row?.type }}</td>
+        </ng-container>
+        <ng-container matColumnDef="colorCode">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Color Code
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <input matInput type="color" [ngModel]="row?.colorCode" [disabled]="true" />
+          </td>
+        </ng-container>
+        <!-- <ng-container matColumnDef="companyId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Company UID
+          </th>
+          <td mat-cell *matCellDef="let row">{{ row?.companyId }}</td>
+        </ng-container> -->
+        <ng-container matColumnDef="createdAt">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Created At
+          </th>
+          <td mat-cell *matCellDef="let row">
+            {{ row?.createdAt | date: "medium" }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>
+            Actions
+          </th>
+          <td mat-cell *matCellDef="let row" class="td-actions">
+            <div class="action-col">
+              <button
+                mat-raised-button=""
+                type="button"
+                class="btn btn-success btn-link"
+                (click)="onView(row?._id)"
+              >
+                <span class="mat-button-wrapper">
+                  <i class="material-icons">visibility</i>
+                </span>
+                <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                <div class="mat-button-focus-overlay"></div>
+              </button>
+              <button
+                mat-raised-button=""
+                type="button"
+                class="btn btn-warning btn-link"
+                (click)="onUpdate(row?._id)"
+              >
+                <span class="mat-button-wrapper"
+                  ><i class="material-icons">edit</i>
+                </span>
+                <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                <div class="mat-button-focus-overlay"></div>
+              </button>
+              <button
+                mat-raised-button=""
+                type="button"
+                class="btn btn-danger btn-link"
+                (click)="onDelete(row?._id, row?.type)"
+              >
+                <span class="mat-button-wrapper"
+                  ><i class="material-icons">delete</i>
+                </span>
+                <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                <div class="mat-button-focus-overlay"></div>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <mat-paginator
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="pageEvent = onPageChange($event)"
+      ></mat-paginator>
+    </div>
+  </div>
+</div>

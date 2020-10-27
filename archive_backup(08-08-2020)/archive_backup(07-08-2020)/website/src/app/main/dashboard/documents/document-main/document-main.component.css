@@ -1,0 +1,16 @@
+.fa {
+  /* font-size: 80%; */
+  display: block;
+  font-size: 7em;
+}
+.folder-container {
+  text-align: center;
+  margin: 2% 0;
+}
+.folder-container span {
+  font-size: 1.25em;
+}
+
+.mat-elevation-z8 {
+  min-height: 70vh;
+}

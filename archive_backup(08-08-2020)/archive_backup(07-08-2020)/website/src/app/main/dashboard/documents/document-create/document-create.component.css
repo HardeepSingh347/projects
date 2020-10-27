@@ -1,0 +1,47 @@
+mat-form-field {
+  width: 100%;
+}
+form.mt-3.insel img.ng-star-inserted {
+  width: auto;
+  max-width: 230px;
+}
+.view-datas {
+  box-shadow: 0px 1px 9px 3px #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  width: 100%;
+  float: left;
+}
+.view-datas img {
+  width: auto;
+  max-width: 230px;
+  margin-bottom: 40px;
+}
+.view-datas .inr-data {
+  text-transform: capitalize;
+  float: left;
+  width: 100%;
+}
+.view-datas p {
+  width: 100%;
+  max-width: 150px;
+  display: inline-block;
+  float: left;
+}
+.view-datas span {
+  display: inline-block;
+  width: 60%;
+  float: left;
+}
+.view-datas a.file-download {
+  background: #323d8c;
+  padding: 10px 30px;
+  margin-top: 20px;
+  cursor: pointer;
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  font-size: 24px;
+  border-radius: 5px;
+  float: left;
+}

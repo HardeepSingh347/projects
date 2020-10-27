@@ -1,0 +1,190 @@
+<div id="page-content-wrapper">
+  <div class="container-fluid contBox mt-4">
+    <h1>{{ mode | titlecase }} User</h1>
+
+    <div class="row mt-4">
+      <div class="col-md-4" *ngIf="mode !== 'view'">
+        <form
+          #userForm="ngForm"
+          (submit)="onCreateUser(userForm)"
+          class="mt-3 insel"
+        >
+          <div *ngIf="userErrors">
+            <span class="text-danger"> {{ userErrors?.message }} </span>
+          </div>
+          <div>
+            <input
+              type="file"
+              class="form-control"
+              placeholder="Select File"
+              name="profile_image"
+              (change)="onChangeFile($event.target.files)"
+              ngModel
+              [required]="this.mode === 'create'"
+            />
+            <mat-error
+              *ngIf="
+                (userForm.submitted ||
+                  userForm.controls['profile_image']?.touched) &&
+                userForm.controls['profile_image'].invalid
+              "
+            >
+              Please select a document to upload
+            </mat-error>
+            <mat-error *ngIf="userForm?.controls.email?.hasError('unique')"
+              >Please select a valid image of size less than 2 MBs.</mat-error
+            >
+          </div>
+          <mat-form-field>
+            <mat-label>First Name</mat-label>
+            <input
+              matInput
+              type="text"
+              name="firstname"
+              [ngModel]="userDetails?.firstname"
+              required
+            />
+            <mat-error>Please fill this field</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input
+              matInput
+              type="text"
+              name="lastname"
+              [ngModel]="userDetails?.lastname"
+              required
+            />
+            <mat-error>Please fill this field</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              type="text"
+              email
+              name="email"
+              [ngModel]="userDetails?.email"
+              required
+              pattern="[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+            />
+            <mat-error
+              *ngIf="
+                userForm?.controls.email?.hasError('pattern') &&
+                !userForm?.controls.email?.hasError('required')
+              "
+              >Incorrect email address.</mat-error
+            >
+            <mat-error *ngIf="userForm?.controls.email?.hasError('required')"
+              >Email is required.</mat-error
+            >
+            <mat-error *ngIf="userForm?.controls.email?.hasError('unique')"
+              >Email is already registered.</mat-error
+            >
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Phone</mat-label>
+            <input
+              matInput
+              type="text"
+              name="phone"
+              pattern="^[0-9]*"
+              [ngModel]="userDetails?.phone"
+              required
+            />
+            <mat-error
+              *ngIf="
+                userForm?.controls.phone?.hasError('pattern') &&
+                !userForm?.controls.phone?.hasError('required')
+              "
+              >Incorrect phone number.</mat-error
+            >
+            <mat-error *ngIf="userForm?.controls.phone?.hasError('required')"
+              >Phone number is required.</mat-error
+            >
+            <mat-error *ngIf="userForm?.controls.phone?.hasError('unique')"
+              >Phone number is already registered.</mat-error
+            >
+          </mat-form-field>
+
+          <mat-form-field *ngIf="mode === 'create'">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              type="password"
+              name="password"
+              minlength="6"
+              ngModel
+              required
+            />
+            <mat-error>Please enter a valid password</mat-error>
+          </mat-form-field>
+
+          <mat-form-field *ngIf="authUserDetails?.role === 0">
+            <mat-label>Role</mat-label>
+            <mat-select name="role" [ngModel]="role" required>
+              <mat-option [value]="1">Admin</mat-option>
+              <mat-option [value]="2">User</mat-option>
+            </mat-select>
+            <mat-error>Please choose a role.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field *ngIf="authUserDetails?.role === 0">
+            <mat-label>Company</mat-label>
+            <mat-select name="companyId" [ngModel]="userDetails?.companyId._id" required>
+              <mat-option
+                *ngFor="let company of companies$ | async"
+                [value]="company._id"
+                >{{ company.name }}</mat-option
+              >
+            </mat-select>
+            <mat-error>Pleas choose a company.</mat-error>
+          </mat-form-field>
+
+          <button type="submit" class="custombtns">Create User</button>
+        </form>
+      </div>
+      <div class="col-md-6 card boxsh p-5" *ngIf="mode === 'view'">
+        <!-- <div class="ml-auto">
+          <button mat-fab color="primary" title="update profile" class="clickable" (click)="editProfile()"><mat-icon>edit</mat-icon></button>
+        </div> -->
+        <div class="fixProfle">
+          <img
+            [src]="imgUrl + userDetails?.profileImage"
+            onerror="this.src='https://www.tutorialrepublic.com/examples/images/avatar/2.jpg'"
+            alt=""
+          />
+          <!-- <div class="upimg">
+            <a href=""><img src="assets/images/upload.png" /></a>
+          </div> -->
+        </div>
+        <form class="mt-3 insel">
+          <div class="form-group mb-2">
+            <p>
+              <b>Firstname : </b>
+              {{ userDetails?.firstname || "N/A" | titlecase }}
+            </p>
+          </div>
+          <div class="form-group mb-2">
+            <p>
+              <b>Lastname : </b>
+              {{ userDetails?.lastname || "N/A" | titlecase }}
+            </p>
+          </div>
+          <div class="form-group mb-2">
+            <p><b>Email : </b> {{ userDetails?.email || "N/A" }}</p>
+          </div>
+          <div class="form-group mb-2">
+            <p><b>Phone : </b> {{ userDetails?.phone || "N/A" }}</p>
+          </div>
+          <div class="form-group mb-2">
+            <p><b>User Type : </b> {{ userDetails?.role || 0 | userType }}</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

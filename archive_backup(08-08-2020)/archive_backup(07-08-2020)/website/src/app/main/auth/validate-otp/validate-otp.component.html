@@ -1,0 +1,43 @@
+<div class="loginbox fadeInDown">
+  <div class="formContent">
+    <div class="fadeIn first">
+      <img
+        src="assets/images/logo.jpg"
+        class="img-fluid"
+        width="300"
+        id="icon"
+        alt="Logo"
+      />
+    </div>
+    <form autocomplete="off" #otpValidationForm="ngForm" (submit)="onValidateOTP(otpValidationForm)">
+      <div class="error" *ngIf="errorLogin">
+        <div class="error-main">{{ loginErrors?.message }}</div>
+      </div>
+      <div class="input-container">
+        <input
+          class="input-field inputWrong"
+          placeholder="OTP"
+          name="otp"
+          ngModel
+          required
+          pattern="^[0-9]*"
+        />
+      </div>
+      <div
+        class="error"
+        *ngIf="
+          (otpValidationForm.submitted || otpValidationForm.controls['otp']?.touched) &&
+          otpValidationForm.controls['otp'].invalid
+        "
+      >
+        OTP is incorrect.
+      </div>
+      <button type="submit" class="btn btn-info btn-block custombtn">
+        Submit Otp
+      </button>
+    </form>
+    <!-- <p class="mt-4">
+      Don’t have an account? <a href="signup.php" class="fp"> Register Now! </a>
+    </p> -->
+  </div>
+</div>

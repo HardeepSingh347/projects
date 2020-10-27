@@ -1,0 +1,22 @@
+form.mt-3.insel p b{
+  width:100%;
+  max-width: 120px;
+  float:left;
+  font-weight:500
+}
+form.mt-3.insel .form-group.mb-2 p{
+  font-size: 18px;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.input-group-from {
+  display: block;
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+}

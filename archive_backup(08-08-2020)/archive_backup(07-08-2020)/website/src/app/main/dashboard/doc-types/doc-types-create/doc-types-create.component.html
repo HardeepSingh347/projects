@@ -1,0 +1,63 @@
+<div id="page-content-wrapper">
+  <div class="container-fluid contBox mt-4">
+    <h1>{{ mode | titlecase }} Category</h1>
+
+    <div class="row mt-4">
+      <div class="col-md-4">
+        <form
+          #docTypeForm="ngForm"
+          (submit)="onCreateDocType(docTypeForm)"
+          class="mt-3 insel"
+        >
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input
+              matInput
+              type="text"
+              name="type"
+              [ngModel]="docTypeDetails?.type"
+              required
+              [disabled]="mode === 'view'"
+            />
+            <mat-error>Please fill this field</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Color Code</mat-label>
+            <input
+              matInput
+              type="color"
+              name="colorCode"
+              [ngModel]="docTypeDetails?.colorCode"
+              required
+              [disabled]="mode === 'view'"
+            />
+            <mat-error>Please fill this field</mat-error>
+          </mat-form-field>
+
+          <!-- <mat-form-field>
+            <mat-label>UID</mat-label>
+            <input
+              matInput
+              type="text"
+              name="companyId"
+              [ngModel]="companyDetails?.companyId"
+              required
+              [disabled]="mode === 'view'"
+            />
+            <mat-error
+              *ngIf="companyForm?.controls.companyId?.hasError('required')"
+              >Incorrect Company UID.</mat-error
+            >
+            <mat-error
+              *ngIf="companyForm?.controls.companyId?.hasError('unique')"
+              >Company is already registered.</mat-error
+            >
+          </mat-form-field> -->
+
+          <button type="submit" class="custombtns">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

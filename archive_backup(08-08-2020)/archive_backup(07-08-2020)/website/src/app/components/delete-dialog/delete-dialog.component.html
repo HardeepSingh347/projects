@@ -1,0 +1,33 @@
+<div>
+  <h2 class="text-danger" mat-dialog-title *ngIf="data.type === 'store'">
+    Store deletion
+  </h2>
+  <h2 class="text-danger" mat-dialog-title *ngIf="data.type === 'supervisor'">
+    Supervisor deletion
+  </h2>
+
+  <mat-dialog-content>
+    <p>
+      <strong
+        >Are you sure you want to {{ data.action }}
+        <span class="text-primary">"{{ data.title }}"</span>
+        <span *ngIf="data.type === 'store'"> store?</span>
+        <span *ngIf="data.type === 'supervisor'"> supervisor?</span>
+      </strong>
+    </p>
+    <p>
+      All information associated to this {{ data.type }} will be permanently
+      deleted.<br />
+      <span class="text-danger nextLine"
+        >This operation can not be undone.</span
+      >
+    </p>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button class="mat-raised-button" (click)="close()">Cancel</button>
+    <button class="mat-raised-button mat-warn ml-3" (click)="delete()">
+      Delete
+    </button>
+  </mat-dialog-actions>
+</div>

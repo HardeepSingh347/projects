@@ -1,0 +1,93 @@
+<div id="page-content-wrapper">
+  <div class="container-fluid contBox mt-4">
+    <h1>Profile</h1>
+
+    <div class="row mt-4">
+      <div class="col-md-6 card boxsh p-5" *ngIf="edit === false">
+        <div class="ml-auto">
+          <button mat-fab color="primary" title="update profile" class="clickable" (click)="editProfile()"><mat-icon>edit</mat-icon></button>
+        </div>
+        <div class="fixProfle">
+          <img
+            [src]="imgUrl + user?.profileImage"
+            onerror="this.src='https://www.tutorialrepublic.com/examples/images/avatar/2.jpg'"
+            alt=""
+          />
+          <div class="upimg">
+            <a href=""><img src="assets/images/upload.png" /></a>
+          </div>
+        </div>
+        <form class="mt-3 insel">
+          <div class="form-group mb-2">
+            <p><b>Firstname : </b> {{ user?.firstname || "N/A" | titlecase }}</p>
+          </div>
+          <div class="form-group mb-2">
+            <p><b>Lastname : </b> {{ user?.lastname || "N/A" | titlecase }}</p>
+          </div>
+          <div class="form-group mb-2">
+            <p><b>Email : </b> {{ user?.email || "N/A" }}</p>
+          </div>
+          <div class="form-group mb-2">
+            <p><b>Phone : </b> {{ user?.phone || "N/A" }}</p>
+          </div>
+          <div class="form-group mb-2">
+            <p><b>User Type : </b> {{ user?.role || 0 | userType }}</p>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-6" *ngIf="edit === true">
+        <form
+          class="mt-3 insel"
+          #updateProfileForm="ngForm"
+          (submit)="onUpdateProfile(updateProfileForm)"
+        >
+          <div class="input-group-from mb-3">
+            <input type="file" name="profileUrl" ngModel (change)="onChangeProfileImage($event.target.files)">
+          </div>
+          <mat-form-field class="input-group-from mb-3">
+            <mat-label>First Name</mat-label>
+            <input
+              matInput
+              type="text"
+              name="firstname"
+              [ngModel]="firstname"
+              required
+            />
+            <mat-error>
+              Please fill this field
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="input-group-from mb-3">
+            <mat-label>Last Name</mat-label>
+            <input
+              matInput
+              type="text"
+              name="lastname"
+              [ngModel]="lastname"
+              required
+            />
+            <mat-error>
+              Please fill this field
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="input-group-from mb-3">
+            <mat-label>Phone</mat-label>
+            <input
+              matInput
+              type="text"
+              name="phone"
+              [ngModel]="phone"
+              required
+            />
+            <mat-error>
+              Please fill this field
+            </mat-error>
+          </mat-form-field>
+          <div class="mb-3">
+            <button mat-raised-button color="primary">Update Profile</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
